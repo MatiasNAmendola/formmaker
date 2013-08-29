@@ -1,23 +1,19 @@
 <?php 
 
-class form_maker {
+class form_maker{
 	
 	public $fields = array();
 
-	public function __construct($fields) {
+	public function __construct($fields){
 	  $this->fields = $fields;
 	}
 
-	public function create_form($fields) {
+	public function create_form($fields){
 		
-		foreach( $fields as $field ) {
-
+		foreach( $fields as $field ){
 			/*
-			* -----------------------------------------------
-			*
 			* Get Attributes, separate based on importance
 			*
-			* -----------------------------------------------
 			*/
 
 			// 1 Type
@@ -37,13 +33,9 @@ class form_maker {
 
 
 			/*
-			* -----------------------------------------------
-			*
 			* Set Attributes For Any of the following fields
 			*
-			* -----------------------------------------------
 			*/
-
 			$atts = "";
 			$atts .= 'type="'.$type.'" ';
 			$atts .= 'name="'.$name.'" ';
@@ -56,11 +48,8 @@ class form_maker {
 
 
 			/*
-			* -----------------------------------------------
-			*
 			* Call Input fields
 			*
-			* -----------------------------------------------
 			*/
 
 			// Input Field
@@ -76,7 +65,6 @@ class form_maker {
 					$input .= '<input '.$atts.' />';
 
 				$input .= '</fieldset>';
-
 			}
 
 			// Textarea
@@ -92,7 +80,6 @@ class form_maker {
 					$input .= '<textarea '.$atts.'></textarea>';
 
 				$input .= '</fieldset>';
-
 			}
 
 			// Submit Field
@@ -108,19 +95,12 @@ class form_maker {
 					$input .= '<input '.$atts.' />';
 
 				$input .= '</fieldset>';
-
 			}
-
 		}
 
 		/*
-		* -----------------------------------------------
-		*
 		* Build Final Form
-		*
-		* -----------------------------------------------
 		*/
-
 		$form = '<form action="" method="post">'.$input.'</form>';
 		return $form;
 	}
@@ -129,7 +109,6 @@ class form_maker {
 
 // setup the form fields in an array
 $fields = array(
-	// First field
 	array(
 		'type'=>'input',
 		'atts'=> array(
@@ -168,114 +147,3 @@ echo $form->create_form($fields);
 
 ?>
 
-
-
-
-
-
-<?php 
-
-// TREVOR VERSION
-
-
-// class form_maker
-// {
-// 	var $fields;
-
-// 	public function __construct($fields)
-// 	{
-// 	  $this->fields = $fields; // assign property
-// 	  $this->create_form($fields); // pass property to function
-// 	}
-
-// 	private function create_form($fields)
-// 	{
-// 		echo '<form action=" method="post">';	
-// 		foreach($fields as $field){
-
-// 			$name = $field['name'];
-// 			$type = $field['type'];
-// 			$label = $field['label'];
-// 			$options = $field['options'];
-// 			$value = $field['value'];
-
-// 			if($type == "input"){
-// 				echo '<label for="'.$name.'">'.$label.'</label>';
-// 				echo '<input type="input" name="'.$name.'" value=""/><br/>';
-// 			}
-// 			if($type == "textarea"){
-// 				echo '<label for="'.$name.'">'.$label.'</label>';
-// 				echo '<textarea  name="'.$name.'"></textarea><br/>';
-// 			}
-// 			if($type == "select"){
-// 				echo '<label for="'.$name.'">'.$label.'</label>';
-// 				echo '<select name="'.$name.'">';
-// 					foreach($options as $option){
-// 						echo '<option value="'.$option.'">'.$option.'</option>';
-// 					}
-// 				echo '</select><br/>';	  
-// 			}
-// 			if($type == "checkbox"){
-// 				echo '<label for="'.$name.'">'.$label.'</label>';
-// 					foreach($options as $option){
-// 						echo '<input type="checkbox" name="'.$name.'" value="'.$option.'">'.$option.'<br>';
-// 					}
-// 				echo'<br/>';	  
-// 			}
-// 			if($type == "submit"){
-// 				echo '<input type="submit" name="'.$name.'" value="'.$value.'"/>';  
-// 			}		
-// 		}
-// 		echo '</form>';
-// 	}
-// }
-
-
-
-
-
-// // setup the form fields in an array
-// $fields = array(
-// 	array(
-// 		'name'=>'first_name',
-// 		'type'=>'input',
-// 		'label'=>'First Name',
-// 		),
-// 	array(
-// 		'name'=>'last_name',
-// 		'type'=>'input',
-// 		'label'=>'Last Name',
-// 		),
-// 	array(
-// 		'name'=>'bio',
-// 		'type'=>'textarea',
-// 		'label'=>'Bio',
-// 		),
-// 	array(
-// 		'name'=>'favorite_color',
-// 		'type'=>'select',
-// 		'label'=>'Favorite Color',
-// 		'options'=> array('blue', 'green', 'black', 'pink')
-// 		),
-// 	array(
-// 		'name'=>'status',
-// 		'type'=>'checkbox',
-// 		'label'=>'Status',
-// 		'options'=> array('Single', 'Married', 'Deal')
-// 		),
-// 	array(
-// 		'name'=>'profile_submit',
-// 		'type'=>'submit',
-// 		'value'=>'Save'
-// 		)
-// 	);
-// $form = new form_maker($fields);
-
-// print_r($test);
-
-// echo $test->input;
-
-// call the method inside
-// $test->form_name('trevor');
-
-?>
